@@ -20,6 +20,7 @@
 		"prettier-plugin-svelte": "^3.1.2",
 		"prettier-plugin-tailwindcss": "^0.5.9",
 		"svelte": "^4.2.7",
+		"svelte-dnd-action": "^0.9.40",
 		"tailwindcss": "^3.3.6",
 		"vite": "^5.0.3"
 	},
