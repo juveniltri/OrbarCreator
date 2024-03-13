@@ -1,8 +1,10 @@
 <script>
-	import Carta from '../components/Carta.svelte';
+	import CartaOrbat from '../components/CartaOrbat.svelte';
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<div class="p-5">
+	<CartaOrbat></CartaOrbat>
+</div>
 
-<Carta />
+<style>
+</style>

@@ -10,10 +10,7 @@ const config = {
 		adapter: adapter()
 	},
 
-	preprocess: [vitePreprocess({})],
-	alias: {
-		'@/*': './path/to/lib/*'
-	}
+	preprocess: [vitePreprocess({})]
 };
 
 export default config;
