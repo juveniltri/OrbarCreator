@@ -1,7 +1,7 @@
 <script>
 	import * as Card from '$lib/components/ui/card/index.js';
 	import Separator from '$lib/components/ui/separator/separator.svelte';
-	import Persona from './Persona.svelte';
+	import ListaMiembros from './ListaMiembros.svelte';
 
 	export let equipoTexto = '';
 
@@ -19,10 +19,6 @@
 	</Card.Header>
 	<Separator class="mb-5" />
 	<Card.Content>
-		<ol class="list-decimal">
-			{#each miembros as miembro (miembro.id)}
-				<Persona {miembro} />
-			{/each}
-		</ol>
+		<ListaMiembros {miembros} />
 	</Card.Content>
 </Card.Root>
