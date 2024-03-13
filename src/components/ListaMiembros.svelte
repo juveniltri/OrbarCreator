@@ -25,14 +25,11 @@
 	}
 
 	function onDragStart(e) {
-		// @ts-ignore
 		const dragged = getDraggedParent(e.target);
 		e.dataTransfer?.setData('source', dragged?.index.toString());
-		console.log(dragged);
 	}
 
 	function onDragOver(e) {
-		// @ts-ignore
 		const id = e.target.dataset?.id;
 		const dragged = getDraggedParent(e.target);
 		isOver = dragged?.id ?? false;

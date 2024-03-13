@@ -15,8 +15,6 @@
 		const newList = e.detail;
 		miembros = newList;
 	}
-
-	console.log(miembros);
 </script>
 
 <Card.Root class="w-[700px]">
