@@ -5,50 +5,26 @@
 	export let nombre;
 	export let rol;
 
-	let esRojo = false;
-	let esAzul = false;
-	let esOro = false;
-	let esVerde = false;
-	function setRojo(event) {
-		esAzul = false;
-		esVerde = false;
-		esOro = false;
-		esRojo = !esRojo;
-	}
-	function setAzul(event) {
-		esRojo = false;
-		esVerde = false;
-		esOro = false;
-		esAzul = !esAzul;
-	}
-	function setOro(event) {
-		esRojo = false;
-		esVerde = false;
-		esAzul = false;
-		esOro = !esOro;
-	}
-	function setVerde(event) {
-		esRojo = false;
-		esOro = false;
-		esAzul = false;
-		esVerde = !esVerde;
+	let colorSeleccionado = '';
+	function setColor(color) {
+		colorSeleccionado = colorSeleccionado === color ? '' : color;
 	}
 </script>
 
 <li>
 	<div
 		class="flex items-center"
-		class:bg-red-300={esRojo}
-		class:bg-blue-300={esAzul}
-		class:bg-yellow-300={esOro}
-		class:bg-green-300={esVerde}
+		class:bg-red-300={colorSeleccionado === 'rojo'}
+		class:bg-blue-300={colorSeleccionado === 'azul'}
+		class:bg-yellow-300={colorSeleccionado === 'oro'}
+		class:bg-green-300={colorSeleccionado === 'verde'}
 	>
 		<p class="mr-24">{rol}: {nombre}</p>
 		<div>
-			<Button class="w-24 bg-red-500" on:click={setRojo}>Rojo</Button>
-			<Button class="w-24 bg-blue-500" on:click={setAzul}>Azul</Button>
-			<Button class="w-24 bg-yellow-500" on:click={setOro}>Oro</Button>
-			<Button class="w-24 bg-green-500" on:click={setVerde}>Verde</Button>
+			<Button class="w-24 bg-red-500" on:click={() => setColor('rojo')}>Rojo</Button>
+			<Button class="w-24 bg-blue-500" on:click={() => setColor('azul')}>Azul</Button>
+			<Button class="w-24 bg-yellow-500" on:click={() => setColor('oro')}>Oro</Button>
+			<Button class="w-24 bg-green-500" on:click={() => setColor('verde')}>Verde</Button>
 		</div>
 	</div>
 </li>
