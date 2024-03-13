@@ -6,25 +6,11 @@
 	export let equipoTexto = '';
 
 	const escuadraNombre = equipoTexto.name;
-	let miembros =  equipoTexto.players.map((player, index) => {
-		let [rol, nombre] = player.split('-').map( part => part.trim());
+	let miembros = equipoTexto.players.map((player, index) => {
+		let [rol, nombre] = player.split('-').map((part) => part.trim());
 		return { rol, nombre, id: index };
 	});
-
-	function handleDragStart(event, id) {
-		console.log("Estamos en Drag");
-        event.dataTransfer.setData('application/json', JSON.stringify({ id }));
-    }
-
-    function handleDragOver(event) {
-        event.preventDefault();
-    }
-
-    function handleDrop(event) {
-        event.preventDefault();
-        const data = JSON.parse(event.dataTransfer.getData('application/json'));
-		const nombre = data.nombre;
-    }
+	console.log(miembros);
 </script>
 
 <Card.Root class="w-[700px]">
@@ -32,12 +18,10 @@
 		<Card.Title>{escuadraNombre}</Card.Title>
 	</Card.Header>
 	<Separator class="mb-5" />
-	<Card.Content on:dragover={handleDragOver}
-				  on:drop={handleDrop}>
+	<Card.Content>
 		<ol class="list-decimal">
-			{#each miembros as {nombre, rol, id} (id)}
-				<Persona {nombre} {rol} {id}
-						on:dragstart={event => handleDragStart(event, id)}/>
+			{#each miembros as miembro (miembro.id)}
+				<Persona {miembro} />
 			{/each}
 		</ol>
 	</Card.Content>

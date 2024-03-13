@@ -2,12 +2,9 @@
 	import Button from '$lib/components/ui/button/button.svelte';
 	import Separator from '$lib/components/ui/separator/separator.svelte';
 
-	export let nombre;
-	export let rol;
-	export let onDragStart;
-	export let id;
+	export let miembro;
 
-	console.log(nombre + " " + rol + " " + id);
+	// console.log(miembro.nombre + ' ' + miembro.rol + ' ' + miembro.id);
 
 	let colorSeleccionado = '';
 	function setColor(color) {
@@ -15,9 +12,7 @@
 	}
 </script>
 
-<li
-	draggable="true"
-	on:dragstart={onDragStart}>
+<li>
 	<div
 		class="flex items-center"
 		class:bg-red-300={colorSeleccionado === 'rojo'}
@@ -25,7 +20,7 @@
 		class:bg-yellow-300={colorSeleccionado === 'oro'}
 		class:bg-green-300={colorSeleccionado === 'verde'}
 	>
-		<p class="mr-24">{rol}: {nombre}</p>
+		<p class="mr-24">{miembro.rol}: {miembro.nombre}</p>
 		<div>
 			<Button class="w-24 bg-red-500" on:click={() => setColor('rojo')}>Rojo</Button>
 			<Button class="w-24 bg-blue-500" on:click={() => setColor('azul')}>Azul</Button>
