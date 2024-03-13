@@ -3,9 +3,9 @@
 	import Separator from '$lib/components/ui/separator/separator.svelte';
 	import Persona from './Persona.svelte';
 
-	export let texto = '';
+	export let equipoTexto = '';
 
-	let lineas = texto.split('\n');
+	let lineas = equipoTexto.split('\n');
 	const escuadraNombre = lineas[0];
 	let miembros = lineas.slice(1).map(linea => {
 		let [rol, nombre] = linea.split('-');
