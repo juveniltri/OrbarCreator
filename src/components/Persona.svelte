@@ -4,6 +4,10 @@
 
 	export let nombre;
 	export let rol;
+	export let onDragStart;
+	export let id;
+
+	console.log(nombre + " " + rol + " " + id);
 
 	let colorSeleccionado = '';
 	function setColor(color) {
@@ -11,7 +15,9 @@
 	}
 </script>
 
-<li>
+<li
+	draggable="true"
+	on:dragstart={onDragStart}>
 	<div
 		class="flex items-center"
 		class:bg-red-300={colorSeleccionado === 'rojo'}
