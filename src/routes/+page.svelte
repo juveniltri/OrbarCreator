@@ -1,5 +1,6 @@
 <script>
 	import CartaOrbat from '../components/CartaOrbat.svelte';
+	import Notifications from 'svelte-notifications';
 
 	let textoEscuadra = '';
 	let escuadras = [];
@@ -20,7 +21,12 @@
 	}
 
 	function generarCartas() {
-		escuadras = convertirTextoAEscuadras(textoEscuadra);
+		if (textoEscuadra !== '') {
+			escuadras = convertirTextoAEscuadras(textoEscuadra);
+		} else {
+			escuadras = false;
+		}
+
 	}
 </script>
 
@@ -49,6 +55,8 @@
 			<CartaOrbat {equipoTexto}></CartaOrbat>
 		{/each}
 	</div>
+{:else}
+	<h2>Tienes que poner el orbat en el cuadro de texto</h2>
 {/if}
 
 <style>
