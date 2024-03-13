@@ -5,13 +5,15 @@
 
 	export let equipoTexto = '';
 
-	let lineas = equipoTexto.split('\n');
-	const escuadraNombre = lineas[0];
-	let miembros = lineas.slice(1).map(linea => {
-		let [rol, nombre] = linea.split('-');
-		return { rol: rol.trim(),
-				 nombre: nombre.trim() };
+	console.log(equipoTexto.name);
+
+	const escuadraNombre = equipoTexto.name;
+	let miembros =  equipoTexto.players.map(player => {
+		let [rol, nombre] = player.split('-').map( part => part.trim());
+		return { rol, nombre };
 	});
+
+	console.dir(miembros);
 </script>
 
 <Card.Root class="w-[700px]">

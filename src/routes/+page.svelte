@@ -1,15 +1,27 @@
 <script>
 	import CartaOrbat from '../components/CartaOrbat.svelte';
+	
 	let textoEscuadra = '';
 	let escuadras = [];
 
+	function convertirTextoAEscuadras(texto) {
+		const bloquesEquipo = texto.trim().split('\n\n');
+		const escuadras = bloquesEquipo.map(bloque => {
+			const lineas = bloque.split('\n');
+			const nombre = lineas[0];
+			const players = lineas.slice(1);
+			return {
+				name: nombre,
+				players: players
+			};
+    	});
+
+    	return escuadras;
+	}
+
 	function generarCartas() {
-		escuadras = textoEscuadra
-			.trim()
-			.split('\n\n')
-			.map((escuadras) => {
-				return escuadras.trim();
-			});
+		escuadras = convertirTextoAEscuadras(textoEscuadra);
+		console.dir(escuadras);
 	}
 </script>
 
