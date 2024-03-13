@@ -18,6 +18,9 @@ Sanitario (R12)-JMartin`;
 	</Card.Header>
 	<Separator class="mb-5" />
 	<Card.Content>
-		<Persona nombre="Proplayer" rol="Medico" />
+		<ol class="list-decimal">
+			<Persona nombre="Proplayer" rol="Medico" />
+			<Persona nombre="Proplayer" rol="Medico" />
+		</ol>
 	</Card.Content>
 </Card.Root>

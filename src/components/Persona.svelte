@@ -35,19 +35,21 @@
 	}
 </script>
 
-<div
-	class="flex items-center"
-	class:bg-red-300={esRojo}
-	class:bg-blue-300={esAzul}
-	class:bg-yellow-300={esOro}
-	class:bg-green-300={esVerde}
->
-	<p class="mr-24">1. {rol}: {nombre}</p>
-	<div>
-		<Button class="w-24 bg-red-500" on:click={setRojo}>Rojo</Button>
-		<Button class="w-24 bg-blue-500" on:click={setAzul}>Azul</Button>
-		<Button class="w-24 bg-yellow-500" on:click={setOro}>Oro</Button>
-		<Button class="w-24 bg-green-500" on:click={setVerde}>Verde</Button>
+<li>
+	<div
+		class="flex items-center"
+		class:bg-red-300={esRojo}
+		class:bg-blue-300={esAzul}
+		class:bg-yellow-300={esOro}
+		class:bg-green-300={esVerde}
+	>
+		<p class="mr-24">{rol}: {nombre}</p>
+		<div>
+			<Button class="w-24 bg-red-500" on:click={setRojo}>Rojo</Button>
+			<Button class="w-24 bg-blue-500" on:click={setAzul}>Azul</Button>
+			<Button class="w-24 bg-yellow-500" on:click={setOro}>Oro</Button>
+			<Button class="w-24 bg-green-500" on:click={setVerde}>Verde</Button>
+		</div>
 	</div>
-</div>
+</li>
 <Separator class="my-5" />
