@@ -10,6 +10,12 @@
 		let [rol, nombre] = player.split('-').map((part) => part.trim());
 		return { rol, nombre, id: index };
 	});
+
+	function sortList(e) {
+		const newList = e.detail;
+		miembros = newList;
+	}
+
 	console.log(miembros);
 </script>
 
@@ -19,6 +25,6 @@
 	</Card.Header>
 	<Separator class="mb-5" />
 	<Card.Content>
-		<ListaMiembros {miembros} />
+		<ListaMiembros {miembros} on:sort={sortList} />
 	</Card.Content>
 </Card.Root>
