@@ -1,9 +1,10 @@
 <script>
 	import CartaOrbat from '../components/CartaOrbat.svelte';
-	import Notifications from 'svelte-notifications';
+	import Notificaciones from '../components/Notificaciones.svelte';
 
 	let textoEscuadra = '';
 	let escuadras = [];
+    let mostrarNotificacion = false;
 
 	function convertirTextoAEscuadras(texto) {
 		const bloquesEquipo = texto.trim().split('\n\n');
@@ -21,10 +22,12 @@
 	}
 
 	function generarCartas() {
-		if (textoEscuadra !== '') {
-			escuadras = convertirTextoAEscuadras(textoEscuadra);
+		if (textoEscuadra.trim() === '') {
+			mostrarNotificacion = true;
+			setTimeout( () => mostrarNotificacion = false, 3000);
 		} else {
-			escuadras = false;
+			escuadras = convertirTextoAEscuadras(textoEscuadra);
+			mostrarNotificacion = false;
 		}
 
 	}
@@ -49,15 +52,18 @@
 	</button>
 </div>
 
+{#if mostrarNotificacion}
+	<Notificaciones message="Tienes que rellenar la info del orbat en el cuadro de texto" type="error"></Notificaciones>
+{/if}
+
 {#if escuadras.length > 0}
 	<div class="mx-2 grid grid-cols-3 gap-y-3">
-		{#each escuadras as equipoTexto (equipoTexto)}
+		{#each escuadras as equipoTexto (equipoTexto.name)}
 			<CartaOrbat {equipoTexto}></CartaOrbat>
 		{/each}
 	</div>
-{:else}
-	<h2>Tienes que poner el orbat en el cuadro de texto</h2>
 {/if}
+
 
 <style>
 </style>
