@@ -1,4 +1,5 @@
 <script>
+	import { onMount } from 'svelte';
 	import CartaOrbat from '../components/CartaOrbat.svelte';
 	import Notificaciones from '../components/Notificaciones.svelte';
 
@@ -27,9 +28,22 @@
 			setTimeout( () => mostrarNotificacion = false, 3000);
 		} else {
 			escuadras = convertirTextoAEscuadras(textoEscuadra);
+			localStorage.setItem('escuadras', JSON.stringify(escuadras))
 			mostrarNotificacion = false;
 		}
 
+	}
+
+	onMount( () => {
+		const cacheEscuadras = localStorage.getItem('escuadras');
+		if (cacheEscuadras) {
+			escuadras = JSON.parse(cacheEscuadras);
+		}
+	});
+
+	function borrarCache() {
+		localStorage.removeItem('escuadras');
+		escuadras = [];
 	}
 </script>
 
@@ -43,12 +57,10 @@
 		Generar Carta
 	</button>
 	<button
-		on:click={() => {
-			textoEscuadra = '';
-		}}
+		on:click={borrarCache}
 		class="rounded bg-gray-500 px-4 py-2 font-bold text-white hover:bg-gray-700"
 	>
-		Limpiar
+		Borrar cache
 	</button>
 </div>
 
