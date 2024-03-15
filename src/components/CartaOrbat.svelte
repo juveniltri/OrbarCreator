@@ -2,8 +2,11 @@
 	import * as Card from '$lib/components/ui/card/index.js';
 	import Separator from '$lib/components/ui/separator/separator.svelte';
 	import ListaMiembros from './ListaMiembros.svelte';
+	import Notificaciones from '../components/Notificaciones.svelte';
 
 	export let equipoTexto = '';
+	
+	let mostrarNotificacion = false;
 
 	const escuadraNombre = equipoTexto.name;
 	let miembros = equipoTexto.players.map((player, index) => {
@@ -39,6 +42,8 @@
 		bbCode += `[/list]\n`;
 		navigator.clipboard.writeText(bbCode).then(() => {
             console.log('BBCode copiado al portapapeles');
+			mostrarNotificacion = true;
+			setTimeout( () => mostrarNotificacion = false, 3000);
         }).catch(err => {
             console.error('Error al copiar al portapapeles:', err);
         });
@@ -51,7 +56,7 @@
 			{escuadraNombre}
 			<button 
 				on:click={exportBBCode}
-				class="bg-green-500 text-white px-4 py-2 rounded m-2"
+				class="rounded bg-green-500 px-4 py-2 font-bold text-white hover:bg-green-700"
 			>
 				Exportar a BBCode
 			</button>
@@ -62,3 +67,7 @@
 		<ListaMiembros {miembros} on:sort={sortList} />
 	</Card.Content>
 </Card.Root>
+
+{#if mostrarNotificacion}
+<Notificaciones message="Has copiado la escuadra al portapapeles en formato BBCode" type="info"></Notificaciones>
+{/if}

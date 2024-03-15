@@ -10,12 +10,13 @@
   <style>
     .notification {
       position: fixed;
-      top: 0;
+      top: 20px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 10;
       padding: 1em;
       color: #fff;
+      border-radius: 10px;
     }
     .error {
       background-color: red;
