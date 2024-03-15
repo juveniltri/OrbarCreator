@@ -11,7 +11,9 @@
 
 	let colorSeleccionado = {};
 	function setColor(color, index) {
+		console.log("Color: " + color + " y index: " + index);
 		colorSeleccionado[index] = colorSeleccionado[index] === color ? '' : color;
+		miembros[index].color = colorSeleccionado[index];
 	}
 
 	const dispatch = createEventDispatcher();
@@ -73,10 +75,10 @@
 		>
 			<div
 				class="flex items-center"
-				class:bg-red-300={colorSeleccionado[index] === 'rojo'}
-				class:bg-blue-300={colorSeleccionado[index] === 'azul'}
-				class:bg-yellow-300={colorSeleccionado[index] === 'oro'}
-				class:bg-green-300={colorSeleccionado[index] === 'verde'}
+				class:bg-red-300={miembro.color === 'rojo'}
+				class:bg-blue-300={miembro.color === 'azul'}
+				class:bg-yellow-300={miembro.color === 'oro'}
+				class:bg-green-300={miembro.color === 'verde'}
 			>
 				<div class="min-w-80">
 					<p class="mr-24">{miembro.rol}: <br />{miembro.nombre}</p>
@@ -85,8 +87,7 @@
 					<Button class="w-4/12 bg-red-500" on:click={() => setColor('rojo', index)}>Rojo</Button>
 					<Button class="w-4/12 bg-blue-500" on:click={() => setColor('azul', index)}>Azul</Button>
 					<Button class="w-4/12 bg-yellow-500" on:click={() => setColor('oro', index)}>Oro</Button>
-					<Button class="w-4/12 bg-green-500" on:click={() => setColor('verde', index)}
-						>Verde</Button
+					<Button class="w-4/12 bg-green-500" on:click={() => setColor('verde', index)}>Verde</Button
 					>
 				</div>
 			</div>
