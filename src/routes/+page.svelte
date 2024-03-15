@@ -5,7 +5,7 @@
 
 	let textoEscuadra = '';
 	let escuadras = [];
-    let mostrarNotificacion = false;
+	let mostrarNotificacion = false;
 
 	function convertirTextoAEscuadras(texto) {
 		const bloquesEquipo = texto.trim().split('\n\n');
@@ -25,16 +25,15 @@
 	function generarCartas() {
 		if (textoEscuadra.trim() === '') {
 			mostrarNotificacion = true;
-			setTimeout( () => mostrarNotificacion = false, 3000);
+			setTimeout(() => (mostrarNotificacion = false), 3000);
 		} else {
 			escuadras = convertirTextoAEscuadras(textoEscuadra);
-			localStorage.setItem('escuadras', JSON.stringify(escuadras))
+			localStorage.setItem('escuadras', JSON.stringify(escuadras));
 			mostrarNotificacion = false;
 		}
-
 	}
 
-	onMount( () => {
+	onMount(() => {
 		const cacheEscuadras = localStorage.getItem('escuadras');
 		if (cacheEscuadras) {
 			escuadras = JSON.parse(cacheEscuadras);
@@ -65,7 +64,8 @@
 </div>
 
 {#if mostrarNotificacion}
-	<Notificaciones message="Tienes que rellenar la info del orbat en el cuadro de texto" type="error"></Notificaciones>
+	<Notificaciones message="Tienes que rellenar la info del orbat en el cuadro de texto" type="error"
+	></Notificaciones>
 {/if}
 
 {#if escuadras.length > 0}
@@ -75,7 +75,6 @@
 		{/each}
 	</div>
 {/if}
-
 
 <style>
 </style>
