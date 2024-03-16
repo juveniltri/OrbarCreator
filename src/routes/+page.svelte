@@ -46,9 +46,53 @@
 	}
 </script>
 
-<textarea bind:value={textoEscuadra} class="h-32 w-full p-2" />
+<div class="flex items-start justify-center mt-8">
+    <div class="flex flex-col w-[50%]">
+        <textarea bind:value={textoEscuadra} class="h-32 w-full p-2"></textarea>
 
-<div class="m-2 flex space-x-2">
+        <div class="flex flex-column justify-end gap-2">
+            <button
+                on:click={generarCartas}
+                class="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
+            >
+                Generar Carta
+            </button>
+            <button
+                on:click={borrarCache}
+                class="rounded bg-gray-500 px-4 py-2 font-bold text-white hover:bg-gray-700"
+            >
+                Borrar cache
+            </button>
+        </div>
+    </div>
+</div>
+
+{#if mostrarNotificacion}
+    <Notificaciones message="Tienes que rellenar la info del orbat en el cuadro de texto" type="error"></Notificaciones>
+{/if}
+
+{#if escuadras.length > 0}
+    <div class="grid grid-cols-2 gap-8">
+        {#each escuadras as equipoTexto (equipoTexto.name)}
+            <CartaOrbat {equipoTexto}></CartaOrbat>
+        {/each}
+    </div>
+{/if}
+
+<style>
+    textarea {
+        margin: 0 auto;
+    }
+
+    .mt-8 {
+        margin-top: 2rem;
+    }
+</style>
+
+<!--
+<div class="textarea">
+	<textarea bind:value={textoEscuadra} class="h-32 p-2" />
+	
 	<button
 		on:click={generarCartas}
 		class="rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700"
@@ -69,12 +113,10 @@
 {/if}
 
 {#if escuadras.length > 0}
-	<div class="mx-2 grid grid-cols-3 gap-y-3">
+	<div class="mx-2 grid grid-cols-2 gap-y-3">
 		{#each escuadras as equipoTexto (equipoTexto.name)}
 			<CartaOrbat {equipoTexto}></CartaOrbat>
 		{/each}
 	</div>
 {/if}
-
-<style>
-</style>
+-->
